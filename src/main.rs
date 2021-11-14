@@ -1,5 +1,5 @@
-mod print;
+mod strings;
 
 fn main() {
-    print::run();
+    strings::run();
 }
