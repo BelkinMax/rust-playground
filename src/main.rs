@@ -1,5 +1,5 @@
-mod strings;
+mod structs;
 
 fn main() {
-    strings::run();
+    structs::run();
 }

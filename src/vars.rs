@@ -1,4 +1,4 @@
-pub fn run() {
+pub fn run () {
   let (first_name, last_name) = ("Max", "Belkin");
   const ID: i32 = 001;
   let mut age = 26;
