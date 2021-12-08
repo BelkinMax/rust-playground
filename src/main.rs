@@ -1,5 +1,6 @@
-mod implementations;
+use modules::documentation;
+mod modules { pub mod documentation; }
 
 fn main() {
-    implementations::run();
+    documentation::run();
 }
