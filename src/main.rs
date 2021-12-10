@@ -1,6 +1,6 @@
-use modules::documentation;
-mod modules { pub mod documentation; }
+use modules::user_input;
+mod modules { pub mod user_input; }
 
 fn main() {
-    documentation::run();
+    user_input::run();
 }
