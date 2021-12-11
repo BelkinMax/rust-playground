@@ -1,14 +1,4 @@
-use std::io;
-
-fn format_input(input: &str) -> String {
-  input.trim().to_lowercase()
-}
-
-fn get_input() -> io::Result<String> {
-  let mut buffer = String::new();
-  io::stdin().read_line(&mut buffer)?;
-  Ok(format_input(&buffer).to_owned())
-}
+use std::io::stdin;
 
 enum Commands {
   Off,
@@ -18,11 +8,45 @@ enum Commands {
   Hibernate,
 }
 
+impl Commands {
+  fn new(state: &str) -> Option<Self> {
+    let formatted_state = state
+      .trim()
+      .to_lowercase();
+    
+    match formatted_state.as_str() {
+      "off" => Some(Commands::Off),
+      "sleep" => Some(Commands::Sleep),
+      "reboot" => Some(Commands::Reboot),
+      "shutdown" => Some(Commands::Shutdown),
+      "hibernate" => Some(Commands::Hibernate),
+      _ => None,
+    }
+  }
+}
+
+fn print_command_action(state: Commands) {
+  use Commands::*;
+
+  match state {
+    Off => println!("Turning off"),
+    Sleep => println!("Sleeping"),
+    Reboot => println!("Rebooting"),
+    Shutdown => println!("Shutting down"),
+    Hibernate => println!("Hibernating"),
+  }
+}
+
 pub fn run() {
-  match get_input() {
-    Ok(command) => {
-      
-    },
-    Err(err) => println!("Error: {:?}", err),
+  let mut buffer = String::new();
+  let user_input = stdin().read_line(&mut buffer);
+
+  if user_input.is_ok() {
+    match Commands::new(&buffer) {
+      Some(state) => print_command_action(state),
+      None => println!("Invalid command")
+    }
+  } else {
+    println!("Error on reading input");
   }
 }
