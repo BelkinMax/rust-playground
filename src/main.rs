@@ -1,6 +1,6 @@
-use modules::user_input;
-mod modules { pub mod user_input; }
+use modules::demo_project;
+mod modules { pub mod demo_project; }
 
 fn main() {
-    user_input::run();
+    demo_project::run();
 }

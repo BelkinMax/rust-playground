@@ -10,6 +10,7 @@ enum Commands {
 
 impl Commands {
   fn new(state: &str) -> Option<Self> {
+    // to_lowercase creates owned string
     let formatted_state = state
       .trim()
       .to_lowercase();
