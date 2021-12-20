@@ -1,6 +1,6 @@
-use modules::demo_project;
-mod modules { pub mod demo_project; }
+use modules::closures;
+mod modules { pub mod closures; }
 
 fn main() {
-    demo_project::run();
+    closures::run();
 }
